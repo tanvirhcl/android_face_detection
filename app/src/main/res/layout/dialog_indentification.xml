@@ -28,15 +28,16 @@
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:id="@+id/animationView"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:lottie_autoPlay="true"
-                    app:lottie_loop="false" />
+                    app:lottie_loop="false"
+                    app:lottie_rawRes="@raw/failure" />
 
 
                 <TextView
@@ -44,28 +45,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Authentication"
+                    android:text="Authentication Failed! \n No matching face found"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="19dp"
+                    android:layout_marginTop="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/animationView" />
 
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnOK"
-                    android:layout_width="match_parent"
+                    android:id="@+id/btnRetry"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OK"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="10dp"
+                    android:text="Retry"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnOK"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvResponse"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/tvResponse" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnOK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:text="OK"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/btnRetry"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/btnRetry" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

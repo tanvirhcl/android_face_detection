@@ -25,8 +25,7 @@ public class PublicMethods {
     private static String[] getRequiredPermissions(Activity mActivity) {
         try {
             PackageInfo info =
-                    mActivity.getPackageManager()
-                            .getPackageInfo(mActivity.getPackageName(), PackageManager.GET_PERMISSIONS);
+                    mActivity.getPackageManager().getPackageInfo(mActivity.getPackageName(), PackageManager.GET_PERMISSIONS);
             String[] ps = info.requestedPermissions;
             if (ps != null && ps.length > 0) {
                 return ps;
@@ -64,47 +63,6 @@ public class PublicMethods {
     private static boolean isPermissionGranted(Context context, String permission) {
         return ContextCompat.checkSelfPermission(context, permission)
                 == PackageManager.PERMISSION_GRANTED;
-    }
-
-    public static float getScreenWidth(Activity mActivity) {
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        mActivity.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        return displaymetrics.widthPixels;
-    }
-
-    public static float getScreenHeight(Activity mActivity) {
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        mActivity.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        return displaymetrics.heightPixels;
-    }
-
-
-    public static String saveToInternalStorage(Bitmap bitmapImage,String fileName, Context mContext) {
-        File directory = mContext.getDir("imageDir", Context.MODE_PRIVATE);
-        File imgPath = new File(directory, fileName);
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(imgPath);
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return directory.getAbsolutePath();
-    }
-
-    public static Bitmap getBitmapByPath(String path , String fileName) {
-        try {
-            File f=new File(path, fileName);
-            return BitmapFactory.decodeStream(new FileInputStream(f));
-        } catch (FileNotFoundException e) {
-            return null;
-        }
     }
 
 }

@@ -9,6 +9,15 @@
     android:background="#000"
     android:keepScreenOn="true">
 
+
+    <ImageView
+        android:id="@+id/ivCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:src="@drawable/ic_switch_camera_white_48dp"
+        android:elevation="5dp"/>
+
     <com.hcl.detection.utils.common.CameraSourcePreview
         android:id="@+id/firePreview"
         android:layout_width="0dp"

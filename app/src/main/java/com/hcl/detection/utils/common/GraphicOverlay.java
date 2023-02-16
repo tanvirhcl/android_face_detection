@@ -179,7 +179,7 @@ public class GraphicOverlay extends View {
     synchronized (lock) {
       this.imageWidth = imageWidth;
       this.imageHeight = imageHeight;
-    //  this.isImageFlipped = isFlipped;
+      this.isImageFlipped = isFlipped;
       needUpdateTransformation = true;
     }
     postInvalidate();

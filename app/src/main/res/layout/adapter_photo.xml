@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginBottom="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:scaleType="center"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="@+id/tilMobile"
+        app:layout_constraintTop_toBottomOf="@+id/tilMobile" />
+
+
+</androidx.cardview.widget.CardView>

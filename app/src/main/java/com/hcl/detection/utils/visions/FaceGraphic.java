@@ -90,7 +90,7 @@ public class FaceGraphic extends GraphicOverlay.Graphic {
 
 
         // Draws a bounding box around the face.
-         float left = x - scale(face.getBoundingBox().width() / 2.0f);
+        float left = x - scale(face.getBoundingBox().width() / 2.0f);
         float top = y - scale(face.getBoundingBox().height() / 2.0f);
         float right = x + scale(face.getBoundingBox().width() / 2.0f);
         float bottom = y + scale(face.getBoundingBox().height() / 2.0f);

@@ -17,56 +17,51 @@ import com.airbnb.lottie.LottieAnimationView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import com.google.android.material.button.MaterialButton;
 import com.hcl.detection.R;
+import com.hcl.detection.utils.interfaces.CameraCallback;
 
-public class IdentificationDialog extends DialogFragment {
+public class IdentificationDialog extends DialogFragment implements View.OnClickListener {
 
-    private String message;
-    private String name;
-
-    private boolean check;
-    public IdentificationDialog(String message, String name,boolean check){
-        this.message= message;
-        this.name= name;
-        this.check=check;
-    }
-
-
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.dialog_indentification,container,false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
-        Calendar.getInstance().getTime();
-        TextView tvResponse = view.findViewById(R.id.tvResponse);
-        LottieAnimationView animationView = view.findViewById(R.id.animationView);
-        if(check){
-            animationView.setAnimation(R.raw.success);
-        }
-        else {
-            animationView.setAnimation(R.raw.failure);
-        }
-        tvResponse.setText(message+" \n" +
-                            "User "+name+" \n" +
-                            new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a").format(Calendar.getInstance().getTime()));
-        view.findViewById(R.id.btnOK).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-               requireActivity().finish();
-            }
-        });
-
-    }
-
+    private MaterialButton btnOK,btnRetry;
+    private CameraCallback listner;
 
     @Override
     public int getTheme() {
         return R.style.CustomBottomSheetDialog;
     }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.dialog_indentification,container,false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        init(view);
+        initCtrl();
+    }
+
+    private void init(View view){
+        btnOK = view.findViewById(R.id.btnOK);
+        btnRetry = view.findViewById(R.id.btnRetry);
+    }
+    private void initCtrl(){
+        btnOK.setOnClickListener(this);
+        btnRetry.setOnClickListener(this);
+    }
+
+    public  void setCallBack(CameraCallback listner){
+        this.listner = listner;
+    }
+
+    @Override
+    public void onClick(View v) {
+        dismiss();
+        switch (v.getId()){
+           case R.id.btnOK : requireActivity().finish(); break;
+           case  R.id.btnRetry : listner.restartCamera();  break;
+        }
+    }
+
 }
